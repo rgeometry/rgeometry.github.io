@@ -1,0 +1,30 @@
+name: publish
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        lfs: true
+    - uses: actions/setup-node@v2
+
+    - name: Install parcel
+      run: |
+        sudo npm install -g parcel
+
+    - name: Build site
+      run: |
+        parcel build index.pug
+
+    - name: Deploy 🚀
+      uses: JamesIves/github-pages-deploy-action@3.7.1
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH: live # The branch the action should deploy to.
+        FOLDER: dist # The folder the action should deploy.
