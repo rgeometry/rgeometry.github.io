@@ -7,7 +7,7 @@
 @blue  : #2374AB;
 @yellow: #FFCE56;
 
-@overlap    : 85px;
+@overlap    : 300px;
 @article_gap: 20px;
 
 @small-screen-query: ~"screen and (max-width: 978px)";
@@ -50,16 +50,18 @@ header {
     color          : @white;
   }
 
-  background    : @blue;
-  color         : @white;
-  padding-top   : 40px;
-  padding-bottom: 20px+@overlap;
-  text-align    : center;
+  background     : @blue;
+  background     : @blue;
+  background     : linear-gradient(180deg, @blue 0%, @blue 25%, @grey 100%);
+  color          : @white;
+  padding-top    : 40px;
+  padding-bottom : 20px+@overlap;
+  text-align     : center;
 
   .btn {
     padding-top: 1em;
     margin     : auto auto;
-    max-width: 3*12em;
+    max-width  : 3*12em;
 
     a {
       display: inline-block;
@@ -122,6 +124,7 @@ article {
     max-width    : 100%;
     padding-left : 0px;
     padding-right: 0px;
+
     p {
       padding-left : 20px;
       padding-right: 20px;
@@ -231,11 +234,13 @@ summary {
 details.has-content summary:hover {
   cursor: pointer;
 }
+
 details .content {
   // padding-left: 1em;
 }
+
 details summary::-webkit-details-marker {
-  display:none;
+  display: none;
 }
 
 
@@ -243,7 +248,8 @@ details summary::-webkit-details-marker {
   @table_radius: 15px;
 
   details:nth-child(odd) {
-    background   : @grey;
+    background: @grey;
+
     @media not @mobile-query {
       border-radius: @table_radius;
     }
@@ -251,23 +257,24 @@ details summary::-webkit-details-marker {
 
   details {
     padding-left  : 0.5em;
-    padding-right  : 0.5em;
+    padding-right : 0.5em;
     padding-top   : 0.5em;
     padding-bottom: 0.5em;
   }
 
   summary>div,
   &>div {
-    display              : grid;
+    display                 : grid;
     // grid-template-columns: 10em 3fr 1fr;
-    grid-template-columns: auto auto 2em;
+    grid-template-columns   : auto auto 2em;
 
     div:nth-child(1) {
       // text-align   : right;
       padding-right: 0.5em;
     }
+
     div:nth-child(2) {
-      text-align   : right;
+      text-align      : right;
       // padding-right: 0.5em;
     }
 
