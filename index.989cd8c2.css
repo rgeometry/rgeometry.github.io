@@ -24,9 +24,10 @@ hr {
 }
 header {
   background: #2374AB;
+  background: linear-gradient(180deg, #2374AB 0%, #2374AB 25%, #E7E9ED 100%);
   color: #FFFFFF;
   padding-top: 40px;
-  padding-bottom: 105px;
+  padding-bottom: 320px;
   text-align: center;
 }
 header a {
@@ -96,8 +97,8 @@ article h2 {
   }
 }
 article:first-of-type {
-  top: -85px;
-  margin-bottom: -65px;
+  top: -300px;
+  margin-bottom: -280px;
 }
 article:first-of-type a {
   text-decoration: none;
@@ -241,4 +242,4 @@ details summary::-webkit-details-marker {
   }
 }
 
-/*# sourceMappingURL=index.5b12f87d.css.map */
+/*# sourceMappingURL=index.989cd8c2.css.map */
