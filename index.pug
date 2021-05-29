@@ -8,8 +8,8 @@ mixin video(file)
     //source(src='https://f002.backblazeb2.com/file/rgeometry/'+file type='video/mp4')
     //source(src='https://github.com/rgeometry/rgeometry.github.io/raw/main/assets/'+file type='video/mp4')
 
-mixin playground(hash)
-  iframe(src='https://web.rgeometry.org:20443/loader.html?hash=' +hash)
+mixin playground(gist)
+  iframe(src='https://web.rgeometry.org:20443/loader.html?gist=' +gist)
 
 block content
   article
@@ -29,7 +29,17 @@ block content
         | Adjust the slider to control the number of vertices.
     div
       //- +video('inflate.mp4')
-      +playground('36XCQBE0Yok=')
+      +playground('037a23f8391390df8560a2043a14121e')
+  article#inflate.feature
+    h2 \( O(n log n) \) Convex Hull
+    div
+      p
+        a(href="https://en.wikipedia.org/wiki/Graham_scan") Graham's scan
+        |
+        | implementation for finding the convex hull of a set of points.
+    div
+      //- +video('inflate.mp4')
+      +playground('eac484cd855d001815d23a053919b5ca')
   //- article#fast-visibility.feature
   //-   h2 \( O(k) \) Visibility
   //-   div
