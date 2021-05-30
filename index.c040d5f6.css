@@ -93,6 +93,7 @@ main {
 main article:first-of-type {
   grid-column: span 2;
   max-width: 100%;
+  width: 100%;
 }
 @media screen and (max-width: 768px) {
   main article {
@@ -255,4 +256,4 @@ details summary::-webkit-details-marker {
   }
 }
 
-/*# sourceMappingURL=index.cb445bad.css.map */
+/*# sourceMappingURL=index.c040d5f6.css.map */
