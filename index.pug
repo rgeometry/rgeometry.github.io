@@ -1,12 +1,34 @@
 extends layout.pug
 
-mixin video(file)
-  // Fetch the file locally if possible. Otherwise try BackBlaze. If everything fails,
-  // go for GitHub LFS object. LFS bandwidth is limited to 1GiB/month.
-  video(mute='' loop='' controls='')
-    //source(src='./assets/'+file type='video/mp4')
-    //source(src='https://f002.backblazeb2.com/file/rgeometry/'+file type='video/mp4')
-    //source(src='https://github.com/rgeometry/rgeometry.github.io/raw/main/assets/'+file type='video/mp4')
+mixin feature(args)
+  h2= args.title
+  div
+    +playground(args.gist)
+  div
+    p
+      = '\\(' + args.bigo + '\\)'
+      if args.wiki
+        |
+        | |
+        |
+        a(href=args.wiki) wiki
+      if args.gist
+        |
+        | |
+        |
+        a(href='https://rgeometry.org/rgeometry-playground/?gist=' + args.gist) play
+      if args.api
+        |
+        | |
+        |
+        a(href='https://docs.rs/rgeometry/0.3.0/rgeometry/' + args.api) api
+      if args.paper
+        |
+        | |
+        |
+        a(href=args.paper) paper
+  div
+    block
 
 mixin playground(gist)
   iframe(src='https://web.rgeometry.org:20443/loader.html?gist=' +gist)
@@ -15,31 +37,51 @@ block content
   article
     p
       b RGeometry
-      |
-      | is a ...
+      | 
+      | is a collection of data types such as points, polygons, lines, and segments, and a variety
+      | of algorithms for manipulating them. This crate will be of use to you if you've ever wondered
+      | if a point is inside a polygon or if a bank is adequately covered by surveillance cameras.
     p
-      | Geometry is inherently visual and the rest of this website is
-      | devoted to illustrations and animations that highlight how the various algorithms work.
-  article#inflate.feature
-    h2 \( O(n log n) \) Random Convex Polygons
-    div
+      b FAQ:
+      dl
+        dt Does RGeometry support 3D objects?
+        dd Yes, but most of the algorithms are 2D only.
+        dt Can I compile RGeometry to JavaScript?
+        dd Yes, that is how the playground and all the interactive examples work.
+    p
+      | Geometry is inherently visual and the quickest way to grok this library is to
+      | see it in action. Below are interactive examples of most of the algorithms.
+  article#random-convex.feature
+    +feature(
+      {title: "Random Convex Polygons"
+      ,bigo: "O(n \\log n)"
+      ,wiki: "https://en.wikipedia.org/wiki/Convex_polygon"
+      ,gist: "037a23f8391390df8560a2043a14121e"
+      ,api: "data/struct.PolygonConvex.html#method.random" })
       p
         | Unlike regular polygons, convex polygons can be efficiently sampled without bias.
         | Mostly useful for testing.
         | Adjust the slider to control the number of vertices.
-    div
-      //- +video('inflate.mp4')
-      +playground('037a23f8391390df8560a2043a14121e')
-  article#inflate.feature
-    h2 \( O(n log n) \) Convex Hull
-    div
+  article#convex-hull.feature
+    +feature(
+      {title: "Convex Hull"
+      ,bigo: "O(n \\log n)"
+      ,wiki: "https://en.wikipedia.org/wiki/Graham_scan"
+      ,gist: "eac484cd855d001815d23a053919b5ca"
+      ,api: "algorithms/fn.convex_hull.html" })
       p
-        a(href="https://en.wikipedia.org/wiki/Graham_scan") Graham's scan
-        |
-        | implementation for finding the convex hull of a set of points.
-    div
-      //- +video('inflate.mp4')
-      +playground('eac484cd855d001815d23a053919b5ca')
+        | Graham's scan implementation for finding the convex hull of a set of points.
+  //- article.feature
+  //-   +feature(
+  //-     {title: "Convex Hull of Polygon"
+  //-     ,bigo: "O(n)"
+  //-     ,wiki: "https://en.wikipedia.org/wiki/Convex_hull_of_a_simple_polygon"
+  //-     ,gist: "eac484cd855d001815d23a053919b5ca"
+  //-     ,api: "algorithms/fn.convex_hull.html"
+  //-     ,paper: "https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.512.9681&rep=rep1&type=pdf" })
+  //-     p
+  //-       | The convex hull of a simple polygon is the polygon of minimum perimeter that contains a given
+  //-       | simple polygon. It is a special case of the more general concept of a convex hull.
   //- article#fast-visibility.feature
   //-   h2 \( O(k) \) Visibility
   //-   div
