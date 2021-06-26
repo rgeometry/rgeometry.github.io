@@ -121,10 +121,14 @@ article h2 {
     margin: 0;
     margin-bottom: 20px;
   }
+  article dl,
   article p {
     padding-left: 20px;
     padding-right: 20px;
   }
+}
+article dt {
+  font-weight: bold;
 }
 article:first-of-type {
   top: -300px;
@@ -256,4 +260,4 @@ details summary::-webkit-details-marker {
   }
 }
 
-/*# sourceMappingURL=index.c040d5f6.css.map */
+/*# sourceMappingURL=index.c191fb31.css.map */
