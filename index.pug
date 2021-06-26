@@ -51,6 +51,25 @@ block content
     p
       | Geometry is inherently visual and the quickest way to grok this library is to
       | see it in action. Below are interactive examples of most of the algorithms.
+  article#two-opt.feature
+    +feature(
+      {title: "Random Polygons"
+      ,bigo: "O(n^4)"
+      ,wiki: "https://en.wikipedia.org/wiki/2-opt"
+      ,gist: "298f1415a05cba9f7a0ad6832b7b4c9d"
+      ,api: "algorithms/polygonization/fn.two_opt_moves.html" })
+      p
+        | No matter how you move the points around, the polygon is always be valid and have
+        | no self-intersections.
+  article#convex-hull.feature
+    +feature(
+      {title: "Convex Hull"
+      ,bigo: "O(n \\log n)"
+      ,wiki: "https://en.wikipedia.org/wiki/Graham_scan"
+      ,gist: "eac484cd855d001815d23a053919b5ca"
+      ,api: "algorithms/fn.convex_hull.html" })
+      p
+        | Graham's scan implementation for finding the convex hull of a set of points.
   article#random-convex.feature
     +feature(
       {title: "Random Convex Polygons"
@@ -62,15 +81,6 @@ block content
         | Unlike regular polygons, convex polygons can be efficiently sampled without bias.
         | Mostly useful for testing.
         | Adjust the slider to control the number of vertices.
-  article#convex-hull.feature
-    +feature(
-      {title: "Convex Hull"
-      ,bigo: "O(n \\log n)"
-      ,wiki: "https://en.wikipedia.org/wiki/Graham_scan"
-      ,gist: "eac484cd855d001815d23a053919b5ca"
-      ,api: "algorithms/fn.convex_hull.html" })
-      p
-        | Graham's scan implementation for finding the convex hull of a set of points.
   //- article.feature
   //-   +feature(
   //-     {title: "Convex Hull of Polygon"
