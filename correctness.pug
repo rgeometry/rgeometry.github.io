@@ -2,5 +2,32 @@ extends layout.pug
 
 block content
   article
-    h2 TBD
-    
+    h2 Correctness
+    p
+      | Computational Geometry is notoriously difficult to get right. The
+      |
+      a(href="https://en.wikipedia.org/wiki/Convex_hull_of_a_simple_polygon") convex hull algorithm
+      | 
+      | is a prime example of this: From 1972 to 1989, 16 solutions were published
+      | in peer-reviewed journals and 7 of them turned out to be wrong.
+    p
+      | So, why should you believe RGeometry is correct?
+      | To answer this we have to look at RGeometry's design and talk about how it
+      | leads to strong guarantees and predictable behaviour.
+  article.feature
+    h3 Fixed precision vs arbitrary precision
+  article.feature
+    h3 Derived Data
+  article.feature
+    h3 Property testing
+    h4 Random Polygons
+    h4 Convex Polygons
+    h4 Monotone Polygons
+  article.feature
+    h3 Emperical testing
+  article.feature
+    h3 Simulation of Simplicity
+  article.feature
+    h3 Floating-point
+
+//- http://cgm.cs.mcgill.ca/~athens/cs601/
