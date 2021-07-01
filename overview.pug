@@ -1,5 +1,295 @@
 extends layout.pug
 
+
+mixin refs(args)
+  if args && args.paper
+    a(href=args.paper) paper
+  if args && args.scihub
+    |
+    | |
+    |
+    a(href="https://sci-hub.do/"+args.scihub) scihub
+  if args && args.doi
+    |
+    | |
+    |
+    a(href="https://doi.org/" + args.doi) doi
+  if args && args.wiki
+    |
+    | |
+    |
+    a(href=args.wiki) wiki
+  if args && args.src
+    |
+    | |
+    |
+    a(href="https://rgeometry.org/rgeometry/rgeometry/" + args.src) api
+
+mixin mark(boolean = false)
+  if boolean == '?'
+    | &quest;
+  else
+    if boolean
+      span.checked
+        | ●
+    else
+      span.unchecked
+        | ●
+
+mixin algo(complexity, name, args)
+  details(class={'has-content': args})
+    summary
+      div
+        div
+          +mark(args && args.src)
+        div= name
+        div= '\\(' + complexity + '\\)'
+    if args
+      div.content
+        +refs(args)
+
 block content
   article
-    h2 TBD
+    h2 Overview of Computation Geometry
+    p
+      | This page is a summary of all the algorithms that belong in the RGeometry library.
+      | Green dots mark algorithms that have already been implemented and clicking on them
+      | will reveal a link to the API documentation.
+    p
+      | If you know of any noteworthy algorithms that are not on this list, please
+      |
+      a(href="https://github.com/rgeometry/rgeometry/issues/new") open
+      |
+      | a ticket on GitHub.
+    //- p
+    //-   b How does RGeometry relate to these projects?
+    //-   dl
+    //-     dt HGeometry
+    //-     dd TBD
+
+    //-     dt CGAL
+    //-     dd TBD
+
+    //-     dt Geometry-Central
+    //-     dd TBD
+  article.feature
+    h3 Polygonization
+    .feature-compare
+      +algo('O(n \\log n)', 'Convex Polygons' ,
+        {paper: "http://cglab.ca/~sander/misc/ConvexGeneration/convex.html"
+        ,title: "Generating Random Convex Polygons"
+        ,wiki: "https://en.wikipedia.org/wiki/Convex_polygon"
+        ,src: "data/struct.PolygonConvex.html#method.random"
+        })
+      +algo('O(n \\log n)', 'Monotone Polygons' ,
+        {paper: "https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.47.6026&rep=rep1&type=pdf"
+        ,title: "Heuristics For The Generation of Random Polygons."
+        ,wiki: "https://en.wikipedia.org/wiki/Monotone_polygon"
+        })
+      +algo('O(n \\log n)', 'Star-shaped Polygons' ,
+        {paper: "https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.47.6026&rep=rep1&type=pdf"
+        ,title: "Heuristics For The Generation of Random Polygons."
+        ,wiki: "https://en.wikipedia.org/wiki/Star-shaped_polygon"
+        })
+      +algo('O(n^4)',         '2-Opt Moves',
+        {paper: "https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.47.6026&rep=rep1&type=pdf"
+        ,title: "Heuristics For The Generation of Random Polygons."
+        ,wiki: "https://en.wikipedia.org/wiki/2-opt"
+        ,src: "algorithms/fn.two_opt_moves.html"
+        })
+      +algo('O(?)',         'Random Growth' ,
+        {paper: "https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.47.6026&rep=rep1&type=pdf"
+        ,title: "Heuristics For The Generation of Random Polygons."
+        })
+      +algo('O(?)',         'Skeleton holes', 
+        {paper: "https://www.cs.umanitoba.ca/~cccg2010/electronicProceedings/paper15.pdf"
+        ,wiki: "https://en.wikipedia.org/wiki/Straight_skeleton"
+        })
+
+  article.feature
+    h3 2D Interpolation
+    .feature-compare
+      +algo('O(n)',         'Linear')
+      +algo('O(?)',         'Angular')
+      +algo('O(?)',         'Edge+angle',
+        {paper: "https://www.researchgate.net/profile/Thomas_Sederberg/publication/220721162_2-D_shape_blending_An_intrinsic_solution_to_the_vertex_path_problem/links/0a85e52ec8be60e154000000/2-D-shape-blending-An-intrinsic-solution-to-the-vertex-path-problem.pdf"
+        ,title: "2-D shape blending: An intrinsic solution to the vertex path problem"
+        ,scihub: "10.1145/166117.166118"
+        ,doi: "10.1145/166117.166118"
+        })
+      +algo('O(?)',         'Least-work', 
+        {paper: "https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.121.3736&rank=1"
+        ,title: "A physically based approach to 2-D shape blending (1992)"
+        })
+      +algo('O(?)',         'Star-skeleton',
+        {paper: "https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.116.3675"
+        ,title: "Shape Blending Using the Star-Skeleton Representation (1995)"
+        })
+      +algo('O(?)',         'As-rigid-as-possible',
+        {paper: "https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.150.1531&rank=1"
+        ,title: "As-rigid-as-possible shape interpolation (2000)"
+        })
+      +algo('O(?)',         'Guaranteed intersection-free',
+        {paper: "https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.25.4852&rank=1"
+        ,title: "Guaranteed Intersection-Free Polygon Morphing (2001)"
+        })
+
+  article.feature
+    h3 Visibility
+    .feature-compare
+      +algo('O(n)',         'Linear Visibility', 
+        {paper: "https://link.springer.com/article/10.1007%2FBF01937271"
+        ,title: "Corrections to Lee's visibility polygon algorithm (1987)"
+        ,scihub: "10.1007/BF01937271"
+        ,doi: "10.1007/BF01937271"
+        })
+      +algo('O(n^2)',       'Naive Visibility',
+        {wiki: "https://en.wikipedia.org/wiki/Visibility_polygon#Naive_algorithms"
+        ,wikiTitle: "Visibility polygon"
+        })
+      +algo('O(n \\log n)', 'Sweep Visibility' ,
+        {paper: "https://dl.acm.org/doi/10.1145/10515.10517"
+        ,title: "Worst-case optimal algorithms for constructing visibility polygons with holes (1986)"
+        ,scihub: "10.1145/10515.10517"
+        ,doi: "10.1145/10515.10517"
+        })
+      +algo('O(k)',         'Output-sensitive visibility' ,
+        {paper: "https://link.springer.com/article/10.1007/BF01840360"
+        ,title: "Linear-time algorithms for visibility and shortest path problems inside triangulated simple polygons (1987)"
+        ,scihub: "10.1007/BF01840360"
+        ,doi: "10.1007/BF01840360"
+        })
+      +algo('O(n)',         'Minimum-link path' ,
+        {paper: "https://www.sciencedirect.com/science/article/abs/pii/0734189X86901271"
+        ,title: "A linear time algorithm for minimum link paths inside a simple polygon (1986)"
+        ,scihub: "10.1016/0734-189X(86)90127-1"
+        ,doi: "10.1016/0734-189X(86)90127-1"
+        })
+      +algo('O(n)',         'Visibility window',
+        {paper: "https://www.sciencedirect.com/science/article/abs/pii/0734189X86901271"
+        ,title: "A linear time algorithm for minimum link paths inside a simple polygon (1986)"
+        ,scihub: "10.1016/0734-189X(86)90127-1"
+        ,doi: "10.1016/0734-189X(86)90127-1"
+        })
+      +algo('O(n)',         'Single-source shortest path' ,
+        {paper: "https://link.springer.com/article/10.1007/BF01840360"
+        ,title: "Linear-time algorithms for visibility and shortest path problems inside triangulated simple polygons (1987)"
+        ,scihub: "10.1007/BF01840360"
+        ,doi: "10.1007/BF01840360"
+        })
+      +algo('O(n \\log n)', 'Shortest path' ,
+        {paper: "https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.47.2037&rank=2"
+        ,title: "An Optimal Algorithm for Euclidean Shortest Paths in the Plane"
+        })
+
+  article.feature
+    h3 Convex
+    .feature-compare
+      +algo('O(n)',         'Polygon Kernel',
+        {paper: "http://www.dtic.mil/get-tr-doc/pdf?AD=ADA056887"
+        ,title: "An Optimal Algorithm For Finding The Kernel Of A Polygon (1979)"
+        ,scihub: "10.1145/322139.322142"
+        ,doi: "10.1145/322139.322142"
+        ,wiki: "https://en.wikipedia.org/wiki/Star-shaped_polygon"
+        ,wikiTitle: "Star-shaped Polygon"
+        })
+      +algo('O(n)',         'Polygon Convex Hull', 
+        {paper: "https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.512.9681&rep=rep1&type=pdf"
+        ,title: "Online Construction of the Convex Hull of a Simple Polyline"
+        ,wiki: "https://en.wikipedia.org/wiki/Convex_hull_of_a_simple_polygon"
+        ,wikiTitle: "Convex hull of a Simple Polygon"
+        })
+      +algo('O(n \\log n)', 'Point Set Convex Hull' ,
+        {paper: "https://www.math.ucsd.edu/~ronspubs/72_10_convex_hull.pdf"
+        ,wiki: "https://en.wikipedia.org/wiki/Graham_scan"
+        ,src: "algorithms/fn.convex_hull.html"
+        })
+      +algo('O(\\log n)',   'Convex point locator' ,
+        {paper: "https://cp-algorithms.com/geometry/point-in-convex-polygon.html"
+        ,src: "data/struct.PolygonConvex.html#method.locate"
+        })
+      +algo('O(\\log n)',   'Convex extremes')
+      +algo('O(n + m)',     'Convex Minkowski sum')
+      +algo('O(\\log n + \\log m)', 'Convex intersection' ,
+        {paper: "https://arxiv.org/pdf/1312.1001.pdf"
+        ,title: "Optimal detection of intersections between convex polyhedra"
+        })
+      +algo('O(nr^2)',      'Optimal Convex Decomposition')
+      +algo('O(nr)',        'ACD Lien/Amato' ,
+        {paper: "https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.115.477&rep=rep1&type=pdf"
+        ,title: "Approximate Convex Decomposition of Polygons"
+        })
+      +algo('O(n)',         'ACD Hertel/Mehlhorn', 
+        {paper: "https://core.ac.uk/download/pdf/82318242.pdf"
+        ,title: "Fast Triangulation of the Plane with Respect to Simple Polygons (1985)"
+        ,scihub: "10.1016/S0019-9958(85)80044-9"
+        ,doi: "10.1016/S0019-9958(85)80044-9"
+        })
+
+  article.feature
+    h3 Triangulation
+    .feature-compare
+      +algo('O(n \\log n)', 'Ear clipping' ,
+        {paper: "https://link.springer.com/article/10.1007/s00453-001-0028-4"
+        ,wiki: "https://en.wikipedia.org/wiki/Polygon_triangulation#Ear_clipping_method"
+        ,src: "algorithms/triangulation/earclip/index.html"
+        })
+      +algo('O(n \\log n)', 'Monotone Triangulation' ,
+        {paper: "https://www.ibr.cs.tu-bs.de/courses/ws2021/ag/Papers/Ch5/Garey-etal_Triangulating_1978.pdf"
+        ,wiki: "https://en.wikipedia.org/wiki/Polygon_triangulation#Monotone_polygon_triangulation"
+        })
+      +algo('O(n \\log^\\star n)', 'Trapezoidal Triangulation' ,
+        {paper: "https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.472.6973&rank=1"
+        ,title: "A simple and fast incremental randomized algorithm for computing trapezoidal decompositions and for triangulating polygons (1991)"
+        })
+      +algo('O(n)', 'Randomised Linear Triangulation' ,
+        {paper: "https://www.ics.uci.edu/~goodrich/pubs/dcg-tri.pdf"
+        })
+      +algo('O(n)',         'Linear Triangulation' ,
+        {paper: "https://link.springer.com/article/10.1007/BF02574703"
+        ,title: "Triangulating a simple polygon in linear time (1990)"
+        ,scihub: "10.1109/fscs.1990.89541"
+        ,doi: "10.1109/fscs.1990.89541"
+        })      
+      +algo('O(n^2)',       'Constrained Delaunay Triangulation')
+      +algo('O(n\\log n)',  'Constrained Delaunay Triangulation' ,
+        {paper: "https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.137.8264&rank=2"
+        ,title: "Constrained Delaunay triangulations (1989)"
+        })
+      +algo('O(n \\log n)', 'Delaunay Triangulation' ,
+        {paper: "https://link.springer.com/article/10.1007%2FBF00977785"
+        ,title: "Two algorithms for constructing a Delaunay triangulation (1980)"
+        ,doi: "10.1007/BF00977785"
+        ,scihub: "10.1007/BF00977785"
+        })
+      +algo('O(?)',         'Compatible triangulation')
+
+  article.feature
+    h3 Misc
+    .feature-compare
+      +algo('O((n+k)\\log n)',  'Segment intersections' ,
+        {wiki: "https://en.wikipedia.org/wiki/Bentley–Ottmann_algorithm"
+        ,wikiTitle: "Bentley–Ottmann algorithm"
+        })
+      +algo('O(n\\log n+k)',    'Segment intersections' ,
+        {paper: "https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.460.7188"
+        ,title: "An optimal algorithm for finding segments intersections (1995)"
+        ,doi: "10.1145/220279.220302"
+        })
+      +algo('O(n)',             'Douglas Peucker\'s simplification')
+      +algo('O(n \\log n)',     'Euclidean Minimum Spanning Tree')
+      +algo('O(n \\log n)',     '2D closest pair')
+      +algo('O(n)',             'Polygon point locator')
+      +algo('O(\\log n)',       'Planar point location')
+      +algo('O(nm)',            'Boolean operations' ,
+        {paper: "https://www.inf.usi.ch/hormann/papers/Foster.2019.CSP.pdf"
+        ,title: "Clipping simple polygons with degenerate intersections"
+        ,scihub: "10.1016/j.cagx.2019.100007"
+        ,doi: "10.1016/j.cagx.2019.100007"
+        })
+      +algo('O((n+k) \\log n)', 'Boolean operations' ,
+        {paper: "https://doi.org/10.1016/j.advengsoft.2013.04.004"
+        ,paperTitle: "A simple algorithm for Boolean operations on polygons."
+        ,scihub: "10.1016/j.advengsoft.2013.04.004"
+        ,doi: "10.1016/j.advengsoft.2013.04.004"
+        })
