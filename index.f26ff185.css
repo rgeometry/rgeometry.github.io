@@ -116,7 +116,7 @@ article h2 {
   text-align: center;
 }
 article h3 {
-  margin: 0;
+  margin-top: 0;
   text-align: center;
 }
 @media screen and (max-width: 768px) {
@@ -190,6 +190,12 @@ details.has-content summary:hover {
 details summary::-webkit-details-marker {
   display: none;
 }
+.feature-compare .checked {
+  color: green;
+}
+.feature-compare .unchecked {
+  color: grey;
+}
 .feature-compare details:nth-child(odd) {
   background: #E7E9ED;
 }
@@ -204,28 +210,16 @@ details summary::-webkit-details-marker {
   padding-top: 0.5em;
   padding-bottom: 0.5em;
 }
-.feature-compare summary > div,
-.feature-compare > div {
+.feature-compare summary > div {
   display: grid;
-  grid-template-columns: auto auto 2em;
+  grid-template-columns: auto 1fr auto;
 }
-.feature-compare summary > div div:nth-child(1),
-.feature-compare > div div:nth-child(1) {
+.feature-compare summary > div div:nth-child(1) {
   padding-right: 0.5em;
 }
-.feature-compare summary > div div:nth-child(2),
-.feature-compare > div div:nth-child(2) {
+.feature-compare summary > div div:nth-child(3) {
   text-align: right;
-}
-.feature-compare summary > div div:nth-child(3),
-.feature-compare > div div:nth-child(3),
-.feature-compare summary > div div:nth-child(4),
-.feature-compare > div div:nth-child(4) {
-  text-align: center;
-}
-.feature-compare summary > div div:nth-child(3),
-.feature-compare summary > div div:nth-child(4) {
-  font-size: 150%;
+  text-decoration: underline;
 }
 .feature-compare > div div {
   font-weight: bold;
@@ -251,4 +245,4 @@ details summary::-webkit-details-marker {
   }
 }
 
-/*# sourceMappingURL=index.573b9092.css.map */
+/*# sourceMappingURL=index.f26ff185.css.map */
