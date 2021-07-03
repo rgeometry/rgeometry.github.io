@@ -4,20 +4,20 @@
 is a collection of data types such as points, polygons, lines, and segments, and a variety
 of algorithms for manipulating them. This crate will be of use to you if you've ever wondered
 if a point is inside a polygon or if a bank is adequately covered by surveillance cameras.</p><p><b>FAQ:</b></p><dl><dt>Does RGeometry support 3D objects?</dt><dd>Yes, but most of the algorithms are 2D only.</dd><dt>Can I compile RGeometry to JavaScript?</dt><dd>Yes, that is how the playground and all the interactive examples work.</dd><dt>Any relation to <a href="https://hgeometry.org">HGeometry?</a></dt><dd>Yes, there is overlap in both developers and key concepts.</dd></dl><p></p><p>Geometry is inherently visual and the quickest way to intuitively understand this
-library is to see it in action. Below are interactive examples of most of the algorithms.</p></article><article class="feature" id="two-opt"><h2>Random Polygons</h2><div><iframe src="https://web.rgeometry.org:20443/loader.html?gist=298f1415a05cba9f7a0ad6832b7b4c9d"></iframe></div><div><p>\(O(n^4)\)
+library is to see it in action. Below are interactive examples of most of the algorithms.</p></article><article class="feature" id="two-opt"><h2>Random Polygons</h2><div><iframe src="https://web.rgeometry.org/wasm/gist/298f1415a05cba9f7a0ad6832b7b4c9d"></iframe></div><div><p>\(O(n^4)\)
 |
 <a href="https://en.wikipedia.org/wiki/2-opt">wiki</a>
 |
 <a href="https://rgeometry.org/rgeometry-playground/?gist=298f1415a05cba9f7a0ad6832b7b4c9d">play</a>
 |
 <a href="https://docs.rs/rgeometry/0.3.0/rgeometry/algorithms/polygonization/fn.two_opt_moves.html">api</a></p></div><div><p>No matter how you move the points around, the polygon is always be valid and have
-no self-intersections.</p></div></article><article class="feature" id="convex-hull"><h2>Convex Hull</h2><div><iframe src="https://web.rgeometry.org:20443/loader.html?gist=eac484cd855d001815d23a053919b5ca"></iframe></div><div><p>\(O(n \log n)\)
+no self-intersections.</p></div></article><article class="feature" id="convex-hull"><h2>Convex Hull</h2><div><iframe src="https://web.rgeometry.org/wasm/gist/eac484cd855d001815d23a053919b5ca"></iframe></div><div><p>\(O(n \log n)\)
 |
 <a href="https://en.wikipedia.org/wiki/Graham_scan">wiki</a>
 |
 <a href="https://rgeometry.org/rgeometry-playground/?gist=eac484cd855d001815d23a053919b5ca">play</a>
 |
-<a href="https://docs.rs/rgeometry/0.3.0/rgeometry/algorithms/fn.convex_hull.html">api</a></p></div><div><p>Graham's scan implementation for finding the convex hull of a set of points.</p></div></article><article class="feature" id="random-convex"><h2>Random Convex Polygons</h2><div><iframe src="https://web.rgeometry.org:20443/loader.html?gist=037a23f8391390df8560a2043a14121e"></iframe></div><div><p>\(O(n \log n)\)
+<a href="https://docs.rs/rgeometry/0.3.0/rgeometry/algorithms/fn.convex_hull.html">api</a></p></div><div><p>Graham's scan implementation for finding the convex hull of a set of points.</p></div></article><article class="feature" id="random-convex"><h2>Random Convex Polygons</h2><div><iframe src="https://web.rgeometry.org/wasm/gist/037a23f8391390df8560a2043a14121e"></iframe></div><div><p>\(O(n \log n)\)
 |
 <a href="https://en.wikipedia.org/wiki/Convex_polygon">wiki</a>
 |
