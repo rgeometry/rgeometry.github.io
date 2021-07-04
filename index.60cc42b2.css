@@ -1,5 +1,6 @@
 @font-face {
   font-family: 'VarelaRound';
+  font-display: optional;
   src: url('VarelaRound-Regular.a0c6728e.ttf') format('truetype');
 }
 * {
@@ -241,4 +242,4 @@ details summary::-webkit-details-marker {
   }
 }
 
-/*# sourceMappingURL=index.6c494e20.css.map */
+/*# sourceMappingURL=index.60cc42b2.css.map */
