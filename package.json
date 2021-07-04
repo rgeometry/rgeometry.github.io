@@ -10,5 +10,7 @@
     "parcel-resolver-ignore": "^1.0.1",
     "pug": "^3.0.0"
   },
-  "parcelIgnore": ["playground.html"]
+  "parcelIgnore": [
+    "playground.html"
+  ]
 }
