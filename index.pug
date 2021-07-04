@@ -3,7 +3,7 @@ extends layout.pug
 mixin feature(args)
   h2= args.title
   div
-    +playground(args.gist)
+    +interactive(args.gist)
   div
     p
       = '\\(' + args.bigo + '\\)'
@@ -16,7 +16,7 @@ mixin feature(args)
         |
         | |
         |
-        a(href='https://rgeometry.org/rgeometry-playground/?gist=' + args.gist) play
+        a(href='playground.html?gist='+args.gist) play
       if args.api
         |
         | |
@@ -30,7 +30,7 @@ mixin feature(args)
   div
     block
 
-mixin playground(gist)
+mixin interactive(gist)
   iframe(src='https://web.rgeometry.org/wasm/gist/' + gist)
 
 block content

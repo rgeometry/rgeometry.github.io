@@ -1,12 +1,14 @@
 {
   "devDependencies": {
-    "@parcel/transformer-less": "2.0.0-beta.2",
-    "@parcel/transformer-pug": "2.0.0-beta.2",
+    "@parcel/config-default": "^2.0.0-beta.2",
+    "@parcel/transformer-less": "^2.0.0-beta.2",
+    "@parcel/transformer-pug": "^2.0.0-beta.2",
     "cssnano": "^4.1.10",
+    "jstransformer-less": "^2.3.0",
     "less": "^4.0.0",
+    "parcel": "^2.0.0-beta.2",
+    "parcel-resolver-ignore": "^1.0.1",
     "pug": "^3.0.0"
   },
-  "dependencies": {
-    "parcel-plugin-handlebars": "^0.4.4"
-  }
+  "parcelIgnore": ["playground.html"]
 }
