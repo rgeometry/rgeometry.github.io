@@ -79,10 +79,6 @@ header .btn a:hover {
   color: #ffffff;
   background-color: rgba(255, 255, 255, 0.2);
 }
-header .btn a:visited {
-  color: #ffffff;
-  background-color: rgba(255, 255, 255, 0.2);
-}
 main {
   margin-bottom: 4em;
   display: grid;
@@ -245,4 +241,4 @@ details summary::-webkit-details-marker {
   }
 }
 
-/*# sourceMappingURL=index.83361100.css.map */
+/*# sourceMappingURL=index.6c494e20.css.map */
