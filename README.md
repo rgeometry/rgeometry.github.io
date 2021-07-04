@@ -1,3 +1,5 @@
 # rgeometry.github.io
 
-Run with: parcel index.pug
+Run with:
+npm install
+npx parcel index.pug
