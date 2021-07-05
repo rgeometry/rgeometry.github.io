@@ -29,12 +29,9 @@ mixin mark(boolean = false)
   if boolean == '?'
     | &quest;
   else
-    if boolean
-      span.checked
-        | ●
-    else
-      span.unchecked
-        | ●
+    span(class=boolean ? "checked" : 'unchecked').
+      ⬤
+//- Alternative: ●
 
 mixin algo(complexity, name, args)
   details(class={'has-content': args})
