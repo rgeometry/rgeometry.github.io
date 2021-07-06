@@ -16,7 +16,7 @@ function format_code(cm) {
     const err = result.error();
     if (err) {
       console.log('rustfmt error:', err);
-    } else {
+    } else if (result.code() !== cm.getValue()) {
       const cursor = cm.getCursor();
       const { left, top } = cm.getScrollInfo();
       cm.setValue(result.code());
@@ -36,8 +36,10 @@ var myCodeMirror = CodeMirror(document.querySelector('#editor'), {
   keyMap: 'sublime',
   extraKeys: {
     'Ctrl-Enter': function (cm) {
-      format_code(cm);
-      load_code(cm.getValue());
+      if (!run_button.disabled) {
+        format_code(cm);
+        load_code(cm.getValue());
+      }
     }
   }
 });
