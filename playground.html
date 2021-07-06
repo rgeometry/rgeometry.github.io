@@ -330,7 +330,7 @@ details summary::-webkit-details-marker {
 .playground .CodeMirror {
   min-height: 75vh;
 }
-</style><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/codemirror.min.css"><article class="playground"><div class="grid"><div id="editor"></div><div class="gutter"></div><div class="control"><button disabled="">Run &blacktriangleright;</button></div><div class="render"><div class="lds-ellipsis"><div></div><div></div><div></div></div><iframe></iframe></div></div></article><article>Example 1</article><article>Example 2</article><script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.61.0/codemirror.min.js" integrity="sha512-LwxFyHyqmDdcint8dhTSHeJuI+uH5r/vrcGkxH4QhHGP8SpNaS9MVa1BxZRNTb1GPyLBAWrjbWpZTPGgtDgJOw==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.61.0/addon/mode/simple.min.js" integrity="sha512-E2znx1Q2jMyWOPTL+NhviQc4Ozv77S0CwmoGsgV/6kDaCWjETBvAnWe3CB/Llusmt0lrVNuuk2RcLHYubFKgrg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.61.0/mode/rust/rust.min.js" integrity="sha512-g3Nhw36S0p4ZJQcky87D5M+vZbFvLrgsHWYltUy5IW0zKbvi8GlPRjJSo2CyUyQiU01Ier7u+rBABDs3BawKyQ==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="https://unpkg.com/split-grid/dist/split-grid.js"></script><script>(function () {
+</style><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/codemirror.min.css"><article class="playground"><div class="grid"><div id="editor"></div><div class="gutter"></div><div class="control"><button disabled="">Run &blacktriangleright;</button></div><div class="render"><div class="lds-ellipsis"><div></div><div></div><div></div></div><iframe></iframe></div></div></article><article>Example 1</article><article>Example 2</article><script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.61.0/codemirror.min.js" integrity="sha512-LwxFyHyqmDdcint8dhTSHeJuI+uH5r/vrcGkxH4QhHGP8SpNaS9MVa1BxZRNTb1GPyLBAWrjbWpZTPGgtDgJOw==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.61.0/keymap/sublime.min.js" integrity="sha512-tKUdXq4laeUDT//Pnls3DjHSmGvX2u97cNFecqNWSLjcV+J0PKwjLFBQXcYxPx9ilaNcegMNo1c0hrpRGvy1kA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.61.0/addon/mode/simple.min.js" integrity="sha512-E2znx1Q2jMyWOPTL+NhviQc4Ozv77S0CwmoGsgV/6kDaCWjETBvAnWe3CB/Llusmt0lrVNuuk2RcLHYubFKgrg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.61.0/addon/comment/comment.min.js" integrity="sha512-VQ13rjo5LQmLPtbaWGV4DWx1Zbggd+MZVj6FGT6ltCbUiAN3e/7Usf61eO9vdXENLruXjEeEC3ADoN09P00R4A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.61.0/mode/rust/rust.min.js" integrity="sha512-g3Nhw36S0p4ZJQcky87D5M+vZbFvLrgsHWYltUy5IW0zKbvi8GlPRjJSo2CyUyQiU01Ier7u+rBABDs3BawKyQ==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="https://unpkg.com/split-grid/dist/split-grid.js"></script><script>(function () {
   (function () {
     var wasm;
     const __exports = {};
@@ -463,17 +463,17 @@ details summary::-webkit-details-marker {
 })();
 
 </script><script>(function () {
-  let $8d6e281cdd81c54d5433806c62354259$var$fmt_loaded = false;
-  const $8d6e281cdd81c54d5433806c62354259$var$run_button = document.querySelector('div.control button');
-  const $8d6e281cdd81c54d5433806c62354259$var$render = document.querySelector('div.render');
-  const $8d6e281cdd81c54d5433806c62354259$var$iframe = document.querySelector('div.render iframe');
-  function $8d6e281cdd81c54d5433806c62354259$var$load_code(code) {
-    $8d6e281cdd81c54d5433806c62354259$var$run_button.disabled = true;
-    $8d6e281cdd81c54d5433806c62354259$var$render.classList.add('compiling');
-    $8d6e281cdd81c54d5433806c62354259$var$iframe.src = 'https://web.rgeometry.org/wasm/?code=' + encodeURIComponent(code);
+  let $04d61616ca84d1a068cad6d2b69caaf8$var$fmt_loaded = false;
+  const $04d61616ca84d1a068cad6d2b69caaf8$var$run_button = document.querySelector('div.control button');
+  const $04d61616ca84d1a068cad6d2b69caaf8$var$render = document.querySelector('div.render');
+  const $04d61616ca84d1a068cad6d2b69caaf8$var$iframe = document.querySelector('div.render iframe');
+  function $04d61616ca84d1a068cad6d2b69caaf8$var$load_code(code) {
+    $04d61616ca84d1a068cad6d2b69caaf8$var$run_button.disabled = true;
+    $04d61616ca84d1a068cad6d2b69caaf8$var$render.classList.add('compiling');
+    $04d61616ca84d1a068cad6d2b69caaf8$var$iframe.src = 'https://web.rgeometry.org/wasm/?code=' + encodeURIComponent(code);
   }
-  function $8d6e281cdd81c54d5433806c62354259$var$format_code(cm) {
-    if ($8d6e281cdd81c54d5433806c62354259$var$fmt_loaded) {
+  function $04d61616ca84d1a068cad6d2b69caaf8$var$format_code(cm) {
+    if ($04d61616ca84d1a068cad6d2b69caaf8$var$fmt_loaded) {
       const result = wasm_bindgen.rustfmt(cm.getValue());
       const err = result.error();
       if (err) {
@@ -488,28 +488,29 @@ details summary::-webkit-details-marker {
       result.free();
     }
   }
-  var $8d6e281cdd81c54d5433806c62354259$var$myCodeMirror = CodeMirror(document.querySelector('#editor'), {
+  var $04d61616ca84d1a068cad6d2b69caaf8$var$myCodeMirror = CodeMirror(document.querySelector('#editor'), {
     lineNumbers: true,
     value: '',
     mode: "rust",
     lineWrapping: true,
     indentUnit: 4,
+    keyMap: 'sublime',
     extraKeys: {
       'Ctrl-Enter': function (cm) {
-        $8d6e281cdd81c54d5433806c62354259$var$format_code(cm);
-        $8d6e281cdd81c54d5433806c62354259$var$load_code(cm.getValue());
+        $04d61616ca84d1a068cad6d2b69caaf8$var$format_code(cm);
+        $04d61616ca84d1a068cad6d2b69caaf8$var$load_code(cm.getValue());
       }
     }
   });
-  $8d6e281cdd81c54d5433806c62354259$var$myCodeMirror.on('change', function () {
-    $8d6e281cdd81c54d5433806c62354259$var$run_button.disabled = false;
+  $04d61616ca84d1a068cad6d2b69caaf8$var$myCodeMirror.on('change', function () {
+    $04d61616ca84d1a068cad6d2b69caaf8$var$run_button.disabled = false;
   });
-  $8d6e281cdd81c54d5433806c62354259$var$run_button.onclick = () => {
-    $8d6e281cdd81c54d5433806c62354259$var$format_code($8d6e281cdd81c54d5433806c62354259$var$myCodeMirror);
-    $8d6e281cdd81c54d5433806c62354259$var$load_code($8d6e281cdd81c54d5433806c62354259$var$myCodeMirror.getValue());
+  $04d61616ca84d1a068cad6d2b69caaf8$var$run_button.onclick = () => {
+    $04d61616ca84d1a068cad6d2b69caaf8$var$format_code($04d61616ca84d1a068cad6d2b69caaf8$var$myCodeMirror);
+    $04d61616ca84d1a068cad6d2b69caaf8$var$load_code($04d61616ca84d1a068cad6d2b69caaf8$var$myCodeMirror.getValue());
   };
-  $8d6e281cdd81c54d5433806c62354259$var$iframe.onload = function () {
-    $8d6e281cdd81c54d5433806c62354259$var$render.classList.remove('compiling');
+  $04d61616ca84d1a068cad6d2b69caaf8$var$iframe.onload = function () {
+    $04d61616ca84d1a068cad6d2b69caaf8$var$render.classList.remove('compiling');
   };
   Split({
     // gutters specified in options
@@ -518,19 +519,19 @@ details summary::-webkit-details-marker {
       element: document.querySelector('.gutter')
     }],
     onDragEnd: function () {
-      $8d6e281cdd81c54d5433806c62354259$var$myCodeMirror.refresh();
+      $04d61616ca84d1a068cad6d2b69caaf8$var$myCodeMirror.refresh();
     }
   });
-  const $8d6e281cdd81c54d5433806c62354259$var$params = new URLSearchParams(window.location.search);
-  const $8d6e281cdd81c54d5433806c62354259$var$gist = $8d6e281cdd81c54d5433806c62354259$var$params.get('gist');
-  if ($8d6e281cdd81c54d5433806c62354259$var$gist) {
-    $8d6e281cdd81c54d5433806c62354259$var$myCodeMirror.setValue('Fetching gist...');
-    fetch('https://web.rgeometry.org/fetch-gist/raw/' + $8d6e281cdd81c54d5433806c62354259$var$gist).then(response => response.text()).then(data => {
-      $8d6e281cdd81c54d5433806c62354259$var$myCodeMirror.setValue(data);
-      $8d6e281cdd81c54d5433806c62354259$var$load_code(data);
+  const $04d61616ca84d1a068cad6d2b69caaf8$var$params = new URLSearchParams(window.location.search);
+  const $04d61616ca84d1a068cad6d2b69caaf8$var$gist = $04d61616ca84d1a068cad6d2b69caaf8$var$params.get('gist');
+  if ($04d61616ca84d1a068cad6d2b69caaf8$var$gist) {
+    $04d61616ca84d1a068cad6d2b69caaf8$var$myCodeMirror.setValue('Fetching gist...');
+    fetch('https://web.rgeometry.org/fetch-gist/raw/' + $04d61616ca84d1a068cad6d2b69caaf8$var$gist).then(response => response.text()).then(data => {
+      $04d61616ca84d1a068cad6d2b69caaf8$var$myCodeMirror.setValue(data);
+      $04d61616ca84d1a068cad6d2b69caaf8$var$load_code(data);
     });
   } else {
-    const code = $8d6e281cdd81c54d5433806c62354259$var$params.get('code') || `// Hit Ctrl-Enter to compile
+    const code = $04d61616ca84d1a068cad6d2b69caaf8$var$params.get('code') || `// Hit Ctrl-Enter to compile
 use rgeometry_wasm::playground::*;
 fn main() {
   clear_screen();
@@ -540,12 +541,12 @@ fn main() {
   }
 }
 `;
-    $8d6e281cdd81c54d5433806c62354259$var$myCodeMirror.setValue(code);
-    $8d6e281cdd81c54d5433806c62354259$var$load_code(code);
+    $04d61616ca84d1a068cad6d2b69caaf8$var$myCodeMirror.setValue(code);
+    $04d61616ca84d1a068cad6d2b69caaf8$var$load_code(code);
   }
   wasm_bindgen('wasm_rustfmt_bg.wasm').then(() => {
-    $8d6e281cdd81c54d5433806c62354259$var$fmt_loaded = true;
-    $8d6e281cdd81c54d5433806c62354259$var$format_code($8d6e281cdd81c54d5433806c62354259$var$myCodeMirror);
+    $04d61616ca84d1a068cad6d2b69caaf8$var$fmt_loaded = true;
+    $04d61616ca84d1a068cad6d2b69caaf8$var$format_code($04d61616ca84d1a068cad6d2b69caaf8$var$myCodeMirror);
   });
 })();
 
