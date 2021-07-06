@@ -33,6 +33,7 @@ var myCodeMirror = CodeMirror(document.querySelector('#editor'), {
   mode: "rust",
   lineWrapping: true,
   indentUnit: 4,
+  keyMap: 'sublime',
   extraKeys: {
     'Ctrl-Enter': function (cm) {
       format_code(cm);
