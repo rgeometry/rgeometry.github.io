@@ -478,7 +478,7 @@ details summary::-webkit-details-marker {
       const err = result.error();
       if (err) {
         console.log('rustfmt error:', err);
-      } else {
+      } else if (result.code() !== cm.getValue()) {
         const cursor = cm.getCursor();
         const {left, top} = cm.getScrollInfo();
         cm.setValue(result.code());
@@ -497,8 +497,10 @@ details summary::-webkit-details-marker {
     keyMap: 'sublime',
     extraKeys: {
       'Ctrl-Enter': function (cm) {
-        $04d61616ca84d1a068cad6d2b69caaf8$var$format_code(cm);
-        $04d61616ca84d1a068cad6d2b69caaf8$var$load_code(cm.getValue());
+        if (!$04d61616ca84d1a068cad6d2b69caaf8$var$run_button.disabled) {
+          $04d61616ca84d1a068cad6d2b69caaf8$var$format_code(cm);
+          $04d61616ca84d1a068cad6d2b69caaf8$var$load_code(cm.getValue());
+        }
       }
     }
   });
