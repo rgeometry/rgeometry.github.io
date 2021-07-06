@@ -25,6 +25,7 @@ jobs:
         node --version
         npx parcel --version
         npx parcel build index.pug --no-optimize
+        cp wasm_rustfmt_bg.wasm dist
 
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@3.7.1

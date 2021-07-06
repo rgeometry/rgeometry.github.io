@@ -1,5 +1,4 @@
 let fmt_loaded = false;
-import wasm from 'url:./wasm_rustfmt_bg.wasm';
 
 const run_button = document.querySelector('div.control button');
 const render = document.querySelector('div.render');
@@ -91,7 +90,7 @@ fn main() {
   load_code(code);
 }
 
-wasm_bindgen(wasm).then(() => {
+wasm_bindgen('wasm_rustfmt_bg.wasm').then(() => {
   fmt_loaded = true;
   format_code(myCodeMirror);
 });
