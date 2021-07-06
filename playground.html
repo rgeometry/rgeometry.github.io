@@ -331,31 +331,293 @@ details summary::-webkit-details-marker {
   min-height: 75vh;
 }
 </style><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/codemirror.min.css"><article class="playground"><div class="grid"><div id="editor"></div><div class="gutter"></div><div class="control"><button disabled="">Run &blacktriangleright;</button></div><div class="render"><div class="lds-ellipsis"><div></div><div></div><div></div></div><iframe></iframe></div></div></article><article>Example 1</article><article>Example 2</article><script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.61.0/codemirror.min.js" integrity="sha512-LwxFyHyqmDdcint8dhTSHeJuI+uH5r/vrcGkxH4QhHGP8SpNaS9MVa1BxZRNTb1GPyLBAWrjbWpZTPGgtDgJOw==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.61.0/addon/mode/simple.min.js" integrity="sha512-E2znx1Q2jMyWOPTL+NhviQc4Ozv77S0CwmoGsgV/6kDaCWjETBvAnWe3CB/Llusmt0lrVNuuk2RcLHYubFKgrg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.61.0/mode/rust/rust.min.js" integrity="sha512-g3Nhw36S0p4ZJQcky87D5M+vZbFvLrgsHWYltUy5IW0zKbvi8GlPRjJSo2CyUyQiU01Ier7u+rBABDs3BawKyQ==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="https://unpkg.com/split-grid/dist/split-grid.js"></script><script>(function () {
-  var $4744a9cf35b0b266f8089e2d96fee46a$var$run_button = document.querySelector('div.control button');
-  var $4744a9cf35b0b266f8089e2d96fee46a$var$render = document.querySelector('div.render');
-  var $4744a9cf35b0b266f8089e2d96fee46a$var$iframe = document.querySelector('div.render iframe');
-  function $4744a9cf35b0b266f8089e2d96fee46a$var$load_code(code) {
-    $4744a9cf35b0b266f8089e2d96fee46a$var$run_button.disabled = true;
-    $4744a9cf35b0b266f8089e2d96fee46a$var$render.classList.add('compiling');
-    $4744a9cf35b0b266f8089e2d96fee46a$var$iframe.src = 'https://web.rgeometry.org/wasm/?code=' + encodeURIComponent(code);
+  (function () {
+    var wasm;
+    const __exports = {};
+    const __wbg_error_cc95a3d302735ca3_target = console.error;
+    let cachedDecoder = new TextDecoder('utf-8');
+    let cachegetUint8Memory = null;
+    function getUint8Memory() {
+      if (cachegetUint8Memory === null || cachegetUint8Memory.buffer !== wasm.memory.buffer) {
+        cachegetUint8Memory = new Uint8Array(wasm.memory.buffer);
+      }
+      return cachegetUint8Memory;
+    }
+    function getStringFromWasm(ptr, len) {
+      return cachedDecoder.decode(getUint8Memory().subarray(ptr, ptr + len));
+    }
+    __exports.__wbg_error_cc95a3d302735ca3 = function (arg0, arg1) {
+      let varg0 = getStringFromWasm(arg0, arg1);
+      varg0 = varg0.slice();
+      wasm.__wbindgen_free(arg0, arg1 * 1);
+      __wbg_error_cc95a3d302735ca3_target(varg0);
+    };
+    let cachedEncoder = new TextEncoder('utf-8');
+    function passStringToWasm(arg) {
+      const buf = cachedEncoder.encode(arg);
+      const ptr = wasm.__wbindgen_malloc(buf.length);
+      getUint8Memory().set(buf, ptr);
+      return [ptr, buf.length];
+    }
+    /**
+    * @param {string} arg0
+    * @returns {RustfmtResult}
+    */
+    __exports.rustfmt = function (arg0) {
+      const [ptr0, len0] = passStringToWasm(arg0);
+      try {
+        return RustfmtResult.__construct(wasm.rustfmt(ptr0, len0));
+      } finally {
+        wasm.__wbindgen_free(ptr0, len0 * 1);
+      }
+    };
+    let cachedGlobalArgumentPtr = null;
+    function globalArgumentPtr() {
+      if (cachedGlobalArgumentPtr === null) {
+        cachedGlobalArgumentPtr = wasm.__wbindgen_global_argument_ptr();
+      }
+      return cachedGlobalArgumentPtr;
+    }
+    let cachegetUint32Memory = null;
+    function getUint32Memory() {
+      if (cachegetUint32Memory === null || cachegetUint32Memory.buffer !== wasm.memory.buffer) {
+        cachegetUint32Memory = new Uint32Array(wasm.memory.buffer);
+      }
+      return cachegetUint32Memory;
+    }
+    function freeRustfmtResult(ptr) {
+      wasm.__wbg_rustfmtresult_free(ptr);
+    }
+    /**
+    */
+    class RustfmtResult {
+      static __construct(ptr) {
+        return new RustfmtResult(ptr);
+      }
+      constructor(ptr) {
+        this.ptr = ptr;
+      }
+      free() {
+        const ptr = this.ptr;
+        this.ptr = 0;
+        freeRustfmtResult(ptr);
+      }
+      /**
+      * @returns {string}
+      */
+      code() {
+        if (this.ptr === 0) {
+          throw new Error('Attempt to use a moved value');
+        }
+        const retptr = globalArgumentPtr();
+        wasm.rustfmtresult_code(retptr, this.ptr);
+        const mem = getUint32Memory();
+        const rustptr = mem[retptr / 4];
+        const rustlen = mem[retptr / 4 + 1];
+        const realRet = getStringFromWasm(rustptr, rustlen).slice();
+        wasm.__wbindgen_free(rustptr, rustlen * 1);
+        return realRet;
+      }
+      /**
+      * @returns {string}
+      */
+      error() {
+        if (this.ptr === 0) {
+          throw new Error('Attempt to use a moved value');
+        }
+        const retptr = globalArgumentPtr();
+        wasm.rustfmtresult_error(retptr, this.ptr);
+        const mem = getUint32Memory();
+        const rustptr = mem[retptr / 4];
+        const rustlen = mem[retptr / 4 + 1];
+        if (rustptr === 0) return;
+        const realRet = getStringFromWasm(rustptr, rustlen).slice();
+        wasm.__wbindgen_free(rustptr, rustlen * 1);
+        return realRet;
+      }
+    }
+    __exports.RustfmtResult = RustfmtResult;
+    __exports.__wbindgen_throw = function (ptr, len) {
+      throw new Error(getStringFromWasm(ptr, len));
+    };
+    function init(wasm_path) {
+      const fetchPromise = fetch(wasm_path);
+      let resultPromise;
+      if (typeof WebAssembly.instantiateStreaming === 'function') {
+        resultPromise = WebAssembly.instantiateStreaming(fetchPromise, {
+          './wasm_rustfmt': __exports
+        });
+      } else {
+        resultPromise = fetchPromise.then(response => response.arrayBuffer()).then(buffer => WebAssembly.instantiate(buffer, {
+          './wasm_rustfmt': __exports
+        }));
+      }
+      return resultPromise.then(({instance}) => {
+        wasm = init.wasm = instance.exports;
+        return;
+      });
+    }
+    ;
+    self.wasm_bindgen = Object.assign(init, __exports);
+  })();
+})();
+
+</script><script>(function () {
+  function $parcel$interopDefault(a) {
+    return a && a.__esModule ? a.default : a;
   }
-  var $4744a9cf35b0b266f8089e2d96fee46a$var$myCodeMirror = CodeMirror(document.querySelector('#editor'), {
+  // ASSET: node_modules/@parcel/runtime-js/lib/JSRuntime.js
+  var $150a3018a457abb967a24d0d753ae68d$exports = {};
+  var $7d806a7a603c235ec027b73d847f4d95$var$mapping = {};
+  function $7d806a7a603c235ec027b73d847f4d95$var$register(pairs) {
+    var keys = Object.keys(pairs);
+    for (var i = 0; i < keys.length; i++) {
+      $7d806a7a603c235ec027b73d847f4d95$var$mapping[keys[i]] = pairs[keys[i]];
+    }
+  }
+  function $7d806a7a603c235ec027b73d847f4d95$var$resolve(id) {
+    var resolved = $7d806a7a603c235ec027b73d847f4d95$var$mapping[id];
+    if (resolved == null) {
+      throw new Error('Could not resolve bundle with id ' + id);
+    }
+    return resolved;
+  }
+  var $7d806a7a603c235ec027b73d847f4d95$export$register = $7d806a7a603c235ec027b73d847f4d95$var$register;
+  var $7d806a7a603c235ec027b73d847f4d95$export$resolve = $7d806a7a603c235ec027b73d847f4d95$var$resolve;
+  $7d806a7a603c235ec027b73d847f4d95$export$register(JSON.parse("{\"uEQpK\":\"wasm_rustfmt_bg.6b264555.wasm\"}"));
+  // ASSET: node_modules/@parcel/runtime-js/lib/JSRuntime.js
+  var $d6093f1f05253e195b331620a9555757$exports = {};
+  /*globals document:readonly*/
+  var $634f916bc30b7d6650877f3f4b6a8b3a$var$bundleURL = null;
+  function $634f916bc30b7d6650877f3f4b6a8b3a$var$getBundleURLCached() {
+    if (!$634f916bc30b7d6650877f3f4b6a8b3a$var$bundleURL) {
+      $634f916bc30b7d6650877f3f4b6a8b3a$var$bundleURL = $634f916bc30b7d6650877f3f4b6a8b3a$var$getBundleURL();
+    }
+    return $634f916bc30b7d6650877f3f4b6a8b3a$var$bundleURL;
+  }
+  function $634f916bc30b7d6650877f3f4b6a8b3a$var$getBundleURL() {
+    try {
+      throw new Error();
+    } catch (err) {
+      var matches = ('' + err.stack).match(/(https?|file|ftp):\/\/[^)\n]+/g);
+      if (matches) {
+        return $634f916bc30b7d6650877f3f4b6a8b3a$var$getBaseURL(matches[0]);
+      }
+    }
+    return '/';
+  }
+  function $634f916bc30b7d6650877f3f4b6a8b3a$var$getBaseURL(url) {
+    return ('' + url).replace(/^((?:https?|file|ftp):\/\/.+)\/[^/]+$/, '$1') + '/';
+  }
+  // TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
+  function $634f916bc30b7d6650877f3f4b6a8b3a$var$getOrigin(url) {
+    let matches = ('' + url).match(/(https?|file|ftp):\/\/[^/]+/);
+    if (!matches) {
+      throw new Error('Origin not found');
+    }
+    return matches[0];
+  }
+  var $634f916bc30b7d6650877f3f4b6a8b3a$export$getBundleURL = $634f916bc30b7d6650877f3f4b6a8b3a$var$getBundleURLCached;
+  // ASSET: node_modules/@parcel/runtime-js/lib/relative-path.js
+  var $824bc590bf0a3702ac7bd27152cb0639$exports = {};
+  var $824bc590bf0a3702ac7bd27152cb0639$var$resolve = $7d806a7a603c235ec027b73d847f4d95$export$resolve;
+  $824bc590bf0a3702ac7bd27152cb0639$exports = function (fromId, toId) {
+    return $824bc590bf0a3702ac7bd27152cb0639$var$relative($824bc590bf0a3702ac7bd27152cb0639$var$dirname($824bc590bf0a3702ac7bd27152cb0639$var$resolve(fromId)), $824bc590bf0a3702ac7bd27152cb0639$var$resolve(toId));
+  };
+  function $824bc590bf0a3702ac7bd27152cb0639$var$dirname(_filePath) {
+    if (_filePath === '') {
+      return '.';
+    }
+    var filePath = _filePath[_filePath.length - 1] === '/' ? _filePath.slice(0, _filePath.length - 1) : _filePath;
+    var slashIndex = filePath.lastIndexOf('/');
+    return slashIndex === -1 ? '.' : filePath.slice(0, slashIndex);
+  }
+  function $824bc590bf0a3702ac7bd27152cb0639$var$relative(from, to) {
+    if (from === to) {
+      return '';
+    }
+    var fromParts = from.split('/');
+    if (fromParts[0] === '.') {
+      fromParts.shift();
+    }
+    var toParts = to.split('/');
+    if (toParts[0] === '.') {
+      toParts.shift();
+    }
+    // Find where path segments diverge.
+    var i;
+    var divergeIndex;
+    for (i = 0; (i < toParts.length || i < fromParts.length) && divergeIndex == null; i++) {
+      if (fromParts[i] !== toParts[i]) {
+        divergeIndex = i;
+      }
+    }
+    // If there are segments from "from" beyond the point of divergence,
+    // return back up the path to that point using "..".
+    var parts = [];
+    for (i = 0; i < fromParts.length - divergeIndex; i++) {
+      parts.push('..');
+    }
+    // If there are segments from "to" beyond the point of divergence,
+    // continue using the remaining segments.
+    if (toParts.length > divergeIndex) {
+      parts.push.apply(parts, toParts.slice(divergeIndex));
+    }
+    return parts.join('/');
+  }
+  var $824bc590bf0a3702ac7bd27152cb0639$export$_dirname = $824bc590bf0a3702ac7bd27152cb0639$var$dirname;
+  $824bc590bf0a3702ac7bd27152cb0639$exports._dirname = $824bc590bf0a3702ac7bd27152cb0639$export$_dirname;
+  var $824bc590bf0a3702ac7bd27152cb0639$export$_relative = $824bc590bf0a3702ac7bd27152cb0639$var$relative;
+  $824bc590bf0a3702ac7bd27152cb0639$exports._relative = $824bc590bf0a3702ac7bd27152cb0639$export$_relative;
+  $d6093f1f05253e195b331620a9555757$exports = $634f916bc30b7d6650877f3f4b6a8b3a$export$getBundleURL() + $824bc590bf0a3702ac7bd27152cb0639$exports("2yYhI", "uEQpK");
+  var $d6093f1f05253e195b331620a9555757$$interop$default = /*@__PURE__*/$parcel$interopDefault($d6093f1f05253e195b331620a9555757$exports);
+  let $8d6e281cdd81c54d5433806c62354259$var$fmt_loaded = false;
+  const $8d6e281cdd81c54d5433806c62354259$var$run_button = document.querySelector('div.control button');
+  const $8d6e281cdd81c54d5433806c62354259$var$render = document.querySelector('div.render');
+  const $8d6e281cdd81c54d5433806c62354259$var$iframe = document.querySelector('div.render iframe');
+  function $8d6e281cdd81c54d5433806c62354259$var$load_code(code) {
+    $8d6e281cdd81c54d5433806c62354259$var$run_button.disabled = true;
+    $8d6e281cdd81c54d5433806c62354259$var$render.classList.add('compiling');
+    $8d6e281cdd81c54d5433806c62354259$var$iframe.src = 'https://web.rgeometry.org/wasm/?code=' + encodeURIComponent(code);
+  }
+  function $8d6e281cdd81c54d5433806c62354259$var$format_code(cm) {
+    if ($8d6e281cdd81c54d5433806c62354259$var$fmt_loaded) {
+      const result = wasm_bindgen.rustfmt(cm.getValue());
+      const err = result.error();
+      if (err) {
+        console.log('rustfmt error:', err);
+      } else {
+        const cursor = cm.getCursor();
+        const {left, top} = cm.getScrollInfo();
+        cm.setValue(result.code());
+        cm.setCursor(cursor);
+        cm.scrollTo(left, top);
+      }
+      result.free();
+    }
+  }
+  var $8d6e281cdd81c54d5433806c62354259$var$myCodeMirror = CodeMirror(document.querySelector('#editor'), {
     lineNumbers: true,
     value: '',
     mode: "rust",
     lineWrapping: true,
+    indentUnit: 4,
     extraKeys: {
       'Ctrl-Enter': function (cm) {
-        $4744a9cf35b0b266f8089e2d96fee46a$var$load_code(cm.getValue());
+        $8d6e281cdd81c54d5433806c62354259$var$format_code(cm);
+        $8d6e281cdd81c54d5433806c62354259$var$load_code(cm.getValue());
       }
     }
   });
-  $4744a9cf35b0b266f8089e2d96fee46a$var$myCodeMirror.on('change', function () {
-    $4744a9cf35b0b266f8089e2d96fee46a$var$run_button.disabled = false;
+  $8d6e281cdd81c54d5433806c62354259$var$myCodeMirror.on('change', function () {
+    $8d6e281cdd81c54d5433806c62354259$var$run_button.disabled = false;
   });
-  $4744a9cf35b0b266f8089e2d96fee46a$var$run_button.onclick = () => $4744a9cf35b0b266f8089e2d96fee46a$var$load_code($4744a9cf35b0b266f8089e2d96fee46a$var$myCodeMirror.getValue());
-  $4744a9cf35b0b266f8089e2d96fee46a$var$iframe.onload = function () {
-    $4744a9cf35b0b266f8089e2d96fee46a$var$render.classList.remove('compiling');
+  $8d6e281cdd81c54d5433806c62354259$var$run_button.onclick = () => {
+    $8d6e281cdd81c54d5433806c62354259$var$format_code($8d6e281cdd81c54d5433806c62354259$var$myCodeMirror);
+    $8d6e281cdd81c54d5433806c62354259$var$load_code($8d6e281cdd81c54d5433806c62354259$var$myCodeMirror.getValue());
+  };
+  $8d6e281cdd81c54d5433806c62354259$var$iframe.onload = function () {
+    $8d6e281cdd81c54d5433806c62354259$var$render.classList.remove('compiling');
   };
   Split({
     // gutters specified in options
@@ -364,19 +626,19 @@ details summary::-webkit-details-marker {
       element: document.querySelector('.gutter')
     }],
     onDragEnd: function () {
-      $4744a9cf35b0b266f8089e2d96fee46a$var$myCodeMirror.refresh();
+      $8d6e281cdd81c54d5433806c62354259$var$myCodeMirror.refresh();
     }
   });
-  const $4744a9cf35b0b266f8089e2d96fee46a$var$params = new URLSearchParams(window.location.search);
-  const $4744a9cf35b0b266f8089e2d96fee46a$var$gist = $4744a9cf35b0b266f8089e2d96fee46a$var$params.get('gist');
-  if ($4744a9cf35b0b266f8089e2d96fee46a$var$gist) {
-    $4744a9cf35b0b266f8089e2d96fee46a$var$myCodeMirror.setValue('Fetching gist...');
-    fetch('https://web.rgeometry.org/fetch-gist/raw/' + $4744a9cf35b0b266f8089e2d96fee46a$var$gist).then(response => response.text()).then(data => {
-      $4744a9cf35b0b266f8089e2d96fee46a$var$myCodeMirror.setValue(data);
-      $4744a9cf35b0b266f8089e2d96fee46a$var$load_code(data);
+  const $8d6e281cdd81c54d5433806c62354259$var$params = new URLSearchParams(window.location.search);
+  const $8d6e281cdd81c54d5433806c62354259$var$gist = $8d6e281cdd81c54d5433806c62354259$var$params.get('gist');
+  if ($8d6e281cdd81c54d5433806c62354259$var$gist) {
+    $8d6e281cdd81c54d5433806c62354259$var$myCodeMirror.setValue('Fetching gist...');
+    fetch('https://web.rgeometry.org/fetch-gist/raw/' + $8d6e281cdd81c54d5433806c62354259$var$gist).then(response => response.text()).then(data => {
+      $8d6e281cdd81c54d5433806c62354259$var$myCodeMirror.setValue(data);
+      $8d6e281cdd81c54d5433806c62354259$var$load_code(data);
     });
   } else {
-    const code = $4744a9cf35b0b266f8089e2d96fee46a$var$params.get('code') || `// Hit Ctrl-Enter to compile
+    const code = $8d6e281cdd81c54d5433806c62354259$var$params.get('code') || `// Hit Ctrl-Enter to compile
 use rgeometry_wasm::playground::*;
 fn main() {
   clear_screen();
@@ -386,9 +648,13 @@ fn main() {
   }
 }
 `;
-    $4744a9cf35b0b266f8089e2d96fee46a$var$myCodeMirror.setValue(code);
-    $4744a9cf35b0b266f8089e2d96fee46a$var$load_code(code);
+    $8d6e281cdd81c54d5433806c62354259$var$myCodeMirror.setValue(code);
+    $8d6e281cdd81c54d5433806c62354259$var$load_code(code);
   }
+  wasm_bindgen($d6093f1f05253e195b331620a9555757$$interop$default).then(() => {
+    $8d6e281cdd81c54d5433806c62354259$var$fmt_loaded = true;
+    $8d6e281cdd81c54d5433806c62354259$var$format_code($8d6e281cdd81c54d5433806c62354259$var$myCodeMirror);
+  });
 })();
 
 </script></main><footer>This site uses material from Wikipedia, which is released under the
