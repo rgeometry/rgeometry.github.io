@@ -67,6 +67,15 @@ block content
         | Earclipping with geometric hashing is expected to run in near-linear time and
         | in practice performs better than more advanced algorithms with lower worse-case
         | complexity bounds.
+  article#convex-hull.feature
+    +feature(
+      {title: "Convex Hull"
+      ,bigo: "O(n \\log n)"
+      ,wiki: "https://en.wikipedia.org/wiki/Graham_scan"
+      ,gist: "eac484cd855d001815d23a053919b5ca"
+      ,api: "algorithms/fn.convex_hull.html" })
+      p
+        | Graham's scan implementation for finding the convex hull of a set of points.
   article#two-opt.feature
     +feature(
       {title: "Random Polygons"
@@ -77,15 +86,17 @@ block content
       p
         | No matter how you move the points around, the polygon is always be valid and have
         | no self-intersections.
-  article#convex-hull.feature
+  article#random-monotone.feature
     +feature(
-      {title: "Convex Hull"
+      {title: "Random Monotone Polygons"
       ,bigo: "O(n \\log n)"
-      ,wiki: "https://en.wikipedia.org/wiki/Graham_scan"
-      ,gist: "eac484cd855d001815d23a053919b5ca"
-      ,api: "algorithms/fn.convex_hull.html" })
+      ,wiki: "https://en.wikipedia.org/wiki/Monotone_polygon"
+      ,gist: "c038ccb90a21f8ebe14f17167b85d2ce"
+      ,api: "data/struct.PolygonConvex.html#method.random" })
       p
-        | Graham's scan implementation for finding the convex hull of a set of points.
+        | Monotone polygons has at most two intersections when sliced at a given
+        | angle. They are used for their properties in many algorithms, and random
+        | generation is vital for automated testing.
   article#random-convex.feature
     +feature(
       {title: "Random Convex Polygons"
