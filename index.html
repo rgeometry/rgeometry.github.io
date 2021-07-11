@@ -255,20 +255,28 @@ library is to see it in action. Below are interactive examples of most of the al
 |
 <a href="https://docs.rs/rgeometry/latest/rgeometry/algorithms/triangulation/earclip/index.html">api</a></p></div><div><p>Earclipping with geometric hashing is expected to run in near-linear time and
 in practice performs better than more advanced algorithms with lower worse-case
-complexity bounds.</p></div></article><article class="feature" id="two-opt"><h2>Random Polygons</h2><div><iframe src="https://web.rgeometry.org/wasm/gist/298f1415a05cba9f7a0ad6832b7b4c9d"></iframe></div><div><p>\(O(n^4)\)
+complexity bounds.</p></div></article><article class="feature" id="convex-hull"><h2>Convex Hull</h2><div><iframe src="https://web.rgeometry.org/wasm/gist/eac484cd855d001815d23a053919b5ca"></iframe></div><div><p>\(O(n \log n)\)
+|
+<a href="https://en.wikipedia.org/wiki/Graham_scan">wiki</a>
+|
+<a href="playground.html?gist=eac484cd855d001815d23a053919b5ca">play</a>
+|
+<a href="https://docs.rs/rgeometry/latest/rgeometry/algorithms/fn.convex_hull.html">api</a></p></div><div><p>Graham's scan implementation for finding the convex hull of a set of points.</p></div></article><article class="feature" id="two-opt"><h2>Random Polygons</h2><div><iframe src="https://web.rgeometry.org/wasm/gist/298f1415a05cba9f7a0ad6832b7b4c9d"></iframe></div><div><p>\(O(n^4)\)
 |
 <a href="https://en.wikipedia.org/wiki/2-opt">wiki</a>
 |
 <a href="playground.html?gist=298f1415a05cba9f7a0ad6832b7b4c9d">play</a>
 |
 <a href="https://docs.rs/rgeometry/latest/rgeometry/algorithms/polygonization/fn.two_opt_moves.html">api</a></p></div><div><p>No matter how you move the points around, the polygon is always be valid and have
-no self-intersections.</p></div></article><article class="feature" id="convex-hull"><h2>Convex Hull</h2><div><iframe src="https://web.rgeometry.org/wasm/gist/eac484cd855d001815d23a053919b5ca"></iframe></div><div><p>\(O(n \log n)\)
+no self-intersections.</p></div></article><article class="feature" id="random-monotone"><h2>Random Monotone Polygons</h2><div><iframe src="https://web.rgeometry.org/wasm/gist/c038ccb90a21f8ebe14f17167b85d2ce"></iframe></div><div><p>\(O(n \log n)\)
 |
-<a href="https://en.wikipedia.org/wiki/Graham_scan">wiki</a>
+<a href="https://en.wikipedia.org/wiki/Monotone_polygon">wiki</a>
 |
-<a href="playground.html?gist=eac484cd855d001815d23a053919b5ca">play</a>
+<a href="playground.html?gist=c038ccb90a21f8ebe14f17167b85d2ce">play</a>
 |
-<a href="https://docs.rs/rgeometry/latest/rgeometry/algorithms/fn.convex_hull.html">api</a></p></div><div><p>Graham's scan implementation for finding the convex hull of a set of points.</p></div></article><article class="feature" id="random-convex"><h2>Random Convex Polygons</h2><div><iframe src="https://web.rgeometry.org/wasm/gist/037a23f8391390df8560a2043a14121e"></iframe></div><div><p>\(O(n \log n)\)
+<a href="https://docs.rs/rgeometry/latest/rgeometry/data/struct.PolygonConvex.html#method.random">api</a></p></div><div><p>Monotone polygons has at most two intersections when sliced at a given
+angle. They are used for their properties in many algorithms, and random
+generation is vital for automated testing.</p></div></article><article class="feature" id="random-convex"><h2>Random Convex Polygons</h2><div><iframe src="https://web.rgeometry.org/wasm/gist/037a23f8391390df8560a2043a14121e"></iframe></div><div><p>\(O(n \log n)\)
 |
 <a href="https://en.wikipedia.org/wiki/Convex_polygon">wiki</a>
 |
