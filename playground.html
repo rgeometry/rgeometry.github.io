@@ -184,6 +184,10 @@ summary {
 details.has-content summary:hover {
   cursor: pointer;
 }
+details .content span:not(:first-child)::before {
+  content: " | ";
+  color: black;
+}
 details summary::-webkit-details-marker {
   display: none;
 }

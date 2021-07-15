@@ -184,6 +184,10 @@ summary {
 details.has-content summary:hover {
   cursor: pointer;
 }
+details .content span:not(:first-child)::before {
+  content: " | ";
+  color: black;
+}
 details summary::-webkit-details-marker {
   display: none;
 }
@@ -274,7 +278,7 @@ no self-intersections.</p></div></article><article class="feature" id="random-mo
 |
 <a href="playground.html?gist=c038ccb90a21f8ebe14f17167b85d2ce">play</a>
 |
-<a href="https://docs.rs/rgeometry/latest/rgeometry/data/struct.PolygonConvex.html#method.random">api</a></p></div><div><p>Monotone polygons has at most two intersections when sliced at a given
+<a href="https://docs.rs/rgeometry/latest/rgeometry/algorithms/monotone_polygon/fn.new_monotone_polygon.html">api</a></p></div><div><p>Monotone polygons has at most two intersections when sliced at a given
 angle. They are used for their properties in many algorithms, and random
 generation is vital for automated testing.</p></div></article><article class="feature" id="random-convex"><h2>Random Convex Polygons</h2><div><iframe src="https://web.rgeometry.org/wasm/gist/037a23f8391390df8560a2043a14121e"></iframe></div><div><p>\(O(n \log n)\)
 |
