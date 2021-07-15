@@ -300,6 +300,11 @@ details.has-content summary:hover {
 }
 
 details .content {
+  span:not(:first-child)::before {
+    content: " | ";
+    color  : black;
+  }
+
   // padding-left: 1em;
 }
 

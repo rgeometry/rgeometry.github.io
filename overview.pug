@@ -3,27 +3,20 @@ extends layout.pug
 
 mixin refs(args)
   if args && args.paper
-    a(href=args.paper) paper
+    span
+      a(href=args.paper) paper
   if args && args.scihub
-    |
-    | |
-    |
-    a(href="https://sci-hub.do/"+args.scihub) scihub
+    span
+      a(href="https://sci-hub.do/"+args.scihub) scihub
   if args && args.doi
-    |
-    | |
-    |
-    a(href="https://doi.org/" + args.doi) doi
+    span
+      a(href="https://doi.org/" + args.doi) doi
   if args && args.wiki
-    |
-    | |
-    |
-    a(href=args.wiki) wiki
+    span
+      a(href=args.wiki) wiki
   if args && args.src
-    |
-    | |
-    |
-    a(href="https://rgeometry.org/rgeometry/rgeometry/" + args.src) api
+    span
+      a(href="https://rgeometry.org/rgeometry/rgeometry/" + args.src) api
 
 mixin mark(boolean = false)
   if boolean == '?'
@@ -82,6 +75,7 @@ block content
         {paper: "https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.47.6026&rep=rep1&type=pdf"
         ,title: "Heuristics For The Generation of Random Polygons."
         ,wiki: "https://en.wikipedia.org/wiki/Monotone_polygon"
+        ,src: "algorithms/monotone_polygon/fn.new_monotone_polygon.html"
         })
       +algo('O(n \\log n)', 'Star-shaped Polygons' ,
         {paper: "https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.47.6026&rep=rep1&type=pdf"
@@ -283,7 +277,10 @@ block content
       +algo('O(n)',             'Douglas Peucker\'s simplification')
       +algo('O(n \\log n)',     'Euclidean Minimum Spanning Tree')
       +algo('O(n \\log n)',     '2D closest pair')
-      +algo('O(n)',             'Polygon point locator')
+      +algo('O(n)',             'Polygon point locator',
+        {wiki: "https://en.wikipedia.org/wiki/Point_in_polygon"
+        ,src: "data/struct.Polygon.html#method.locate"
+        })
       +algo('O(\\log n)',       'Planar point location')
       +algo('O(nm)',            'Boolean operations' ,
         {paper: "https://www.inf.usi.ch/hormann/papers/Foster.2019.CSP.pdf"
