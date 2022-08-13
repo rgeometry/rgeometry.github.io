@@ -75,12 +75,13 @@ block content
         {paper: "https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.47.6026&rep=rep1&type=pdf"
         ,title: "Heuristics For The Generation of Random Polygons."
         ,wiki: "https://en.wikipedia.org/wiki/Monotone_polygon"
-        ,src: "algorithms/monotone_polygon/fn.new_monotone_polygon.html"
+        ,src: "algorithms/polygonization/fn.new_monotone_polygon.html"
         })
       +algo('O(n \\log n)', 'Star-shaped Polygons' ,
         {paper: "https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.47.6026&rep=rep1&type=pdf"
         ,title: "Heuristics For The Generation of Random Polygons."
         ,wiki: "https://en.wikipedia.org/wiki/Star-shaped_polygon"
+        ,src: "algorithms/polygonization/fn.new_star_polygon.html"
         })
       +algo('O(n^4)',         '2-Opt Moves',
         {paper: "https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.47.6026&rep=rep1&type=pdf"
@@ -128,15 +129,16 @@ block content
   article.feature
     h3 Visibility
     .feature-compare
+      +algo('O(n^2)',       'Naive Visibility',
+        {wiki: "https://en.wikipedia.org/wiki/Visibility_polygon#Naive_algorithms"
+        ,wikiTitle: "Visibility polygon"
+        ,src: "algorithms/visibility/naive/index.html"
+        })
       +algo('O(n)',         'Linear Visibility', 
         {paper: "https://link.springer.com/article/10.1007%2FBF01937271"
         ,title: "Corrections to Lee's visibility polygon algorithm (1987)"
         ,scihub: "10.1007/BF01937271"
         ,doi: "10.1007/BF01937271"
-        })
-      +algo('O(n^2)',       'Naive Visibility',
-        {wiki: "https://en.wikipedia.org/wiki/Visibility_polygon#Naive_algorithms"
-        ,wikiTitle: "Visibility polygon"
         })
       +algo('O(n \\log n)', 'Sweep Visibility' ,
         {paper: "https://dl.acm.org/doi/10.1145/10515.10517"
