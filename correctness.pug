@@ -4,30 +4,44 @@ block content
   article
     h2 Correctness
     p
-      | Computational Geometry is notoriously difficult to get right. The
+      | Computational Geometry is notoriously difficult to get right. From 1972 to 1989, 7 out of 16 published
       |
-      a(href="https://en.wikipedia.org/wiki/Convex_hull_of_a_simple_polygon") convex hull algorithm
+      a(href="https://en.wikipedia.org/wiki/Convex_hull_of_a_simple_polygon") convex hull algorithms
       | 
-      | is a prime example of this: From 1972 to 1989, 16 solutions were published
-      | in peer-reviewed journals and 7 of them turned out to be wrong.
+      | were wrong.
+      sup
+        a(href="https://cgm.cs.mcgill.ca/~athens/cs601/") [1]
     p
-      | So, why should you believe RGeometry is correct?
-      | To answer this we have to look at RGeometry's design and talk about how it
-      | leads to strong guarantees and predictable behaviour.
+      | Why trust RGeometry? Our design provides strong guarantees and predictable behavior.
   article.feature
     h3 Fixed precision vs arbitrary precision
-  article.feature
-    h3 Derived Data
+    p
+      | While research often assumes infinite precision, RGeometry supports both arbitrary and fixed-precision modes.
+      | We avoid precision loss through exact geometric primitives—for example, comparing distances without computing them.
+    p
+      | All algorithms are tested with 8bit, 16bit, 32bit, and 64bit integers, plus 32bit and 64bit floating-point.
   article.feature
     h3 Property testing
-    h4 Random Polygons
-    h4 Convex Polygons
-    h4 Monotone Polygons
-  article.feature
-    h3 Emperical testing
+    p
+      | RGeometry uses comprehensive property testing to ensure correctness. We generate diverse test data including
+      | convex polygons, monotone polygons, star-shaped polygons, and two-opt polygons across multiple precision levels.
+    p
+      | All documented API properties are verified through automated testing. Additionally, efficient algorithms are validated
+      | against slower but provably correct reference implementations.
   article.feature
     h3 Simulation of Simplicity
+    p
+      | RGeometry has first-class support for Simulation of Simplicity (SoS)
+      sup
+        a(href="https://en.wikipedia.org/wiki/Herbert_Edelsbrunner") [2]
+      | , which eliminates geometric edge cases by perturbing degenerate configurations. This makes algorithms easier
+      | to verify and implement correctly.
   article.feature
     h3 Floating-point
+    p
+      | Fixed-precision floating-point arithmetic is notoriously difficult to get right but widely used in practice.
+      | The value space is enormous, making edge cases nearly impossible to discover through random sampling alone.
+      | RGeometry addresses this by testing algorithms in 8-bit integer space, where the smaller value space
+      | makes edge cases much easier to trigger and verify.
 
 //- http://cgm.cs.mcgill.ca/~athens/cs601/
