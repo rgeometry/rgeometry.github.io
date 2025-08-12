@@ -32,7 +32,7 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: live # The branch the action should deploy to.
-          FOLDER: result # The folder the action should deploy.
-          DRY_RUN: github.ref != 'refs/heads/main'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: live # The branch the action should deploy to.
+          folder: result # The folder the action should deploy.
+          dry-run: github.ref != 'refs/heads/main'
