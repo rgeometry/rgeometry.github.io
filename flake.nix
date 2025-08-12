@@ -45,7 +45,8 @@
 
           buildPhase = ''
             ln -s ${node-modules}/libexec/rgeometry.github.io/node_modules node_modules
-            ${pkgs.yarn}/bin/yarn parcel build index.pug
+            # The optimizer breaks one of the SVGs, so we disable it.
+            ${pkgs.yarn}/bin/yarn parcel build --no-optimize index.pug
           '';
 
           installPhase = ''
