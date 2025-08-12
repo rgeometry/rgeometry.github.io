@@ -29,9 +29,9 @@ jobs:
       - uses: DeterminateSystems/nix-installer-action@main
       - run: nix build
       - name: Deploy 🚀
-        if: github.ref == 'refs/heads/main'
-        uses: JamesIves/github-pages-deploy-action@3.7.1
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: live # The branch the action should deploy to.
           FOLDER: result # The folder the action should deploy.
+          DRY_RUN: github.ref != 'refs/heads/main'
