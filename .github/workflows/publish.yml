@@ -1,35 +1,37 @@
 name: publish
 
+concurrency:
+  group: "${{ github.workflow }}-${{ github.ref }}"
+  cancel-in-progress: "${{ github.ref != 'refs/heads/main' }}"
+
 on:
+  workflow_dispatch:
+  merge_group:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - ready_for_review
   push:
-    branches: [ main ]
+    branches:
+      - main
+
 
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
-      with:
-        node-version: '12'
-
-    #- name: Install parcel
-    #  run: |
-    #    sudo npm install -g parcel
-
-    - name: Build site
-      run: |
-        npm install
-        npm --version
-        node --version
-        npx parcel --version
-        npx parcel build index.pug --no-optimize
-        cp wasm_rustfmt_bg.wasm dist
-
-    - name: Deploy 🚀
-      uses: JamesIves/github-pages-deploy-action@3.7.1
-      with:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        BRANCH: live # The branch the action should deploy to.
-        FOLDER: dist # The folder the action should deploy.
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@main
+      - run: nix build
+      - name: Deploy 🚀
+        if: github.ref == 'refs/heads/main'
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: live # The branch the action should deploy to.
+          FOLDER: result # The folder the action should deploy.
