@@ -3,7 +3,7 @@ extends layout.pug
 mixin feature(args)
   h2= args.title
   div
-    +interactive(args.gist)
+    +interactive(args.demo)
   div
     p
       = '\\(' + args.bigo + '\\)'
@@ -12,11 +12,6 @@ mixin feature(args)
         | |
         |
         a(href=args.wiki) wiki
-      if args.gist
-        |
-        | |
-        |
-        a(href='playground.html?gist='+args.gist) play
       if args.api
         |
         | |
@@ -30,8 +25,8 @@ mixin feature(args)
   div
     block
 
-mixin interactive(gist)
-  iframe(src='https://web.rgeometry.org/wasm/gist/' + gist)
+mixin interactive(demo)
+  iframe(src='https://rgeometry.org/rgeometry/' + demo + '.html')
 
 block content
   article
@@ -62,6 +57,7 @@ block content
       ,bigo: "O(n \\log n)"
       ,wiki: "https://en.wikipedia.org/wiki/Polygon_triangulation"
       ,gist: "24c470c1f33ec67af9ff3fe6dba6ccdf"
+      ,demo: "earclip"
       ,api: "algorithms/triangulation/earclip/index.html" })
       p
         | Earclipping with geometric hashing is expected to run in near-linear time and
@@ -73,6 +69,7 @@ block content
       ,bigo: "O(n \\log n)"
       ,wiki: "https://en.wikipedia.org/wiki/Graham_scan"
       ,gist: "eac484cd855d001815d23a053919b5ca"
+      ,demo: "convex_hull"
       ,api: "algorithms/fn.convex_hull.html" })
       p
         | Graham's scan implementation for finding the convex hull of a set of points.
@@ -82,6 +79,7 @@ block content
       ,bigo: "O(n^4)"
       ,wiki: "https://en.wikipedia.org/wiki/2-opt"
       ,gist: "298f1415a05cba9f7a0ad6832b7b4c9d"
+      ,demo: "two_opt"
       ,api: "algorithms/polygonization/fn.two_opt_moves.html" })
       p
         | No matter how you move the points around, the polygon is always be valid and have
@@ -92,6 +90,7 @@ block content
       ,bigo: "O(n \\log n)"
       ,wiki: "https://en.wikipedia.org/wiki/Monotone_polygon"
       ,gist: "c038ccb90a21f8ebe14f17167b85d2ce"
+      ,demo: "random_monotone"
       ,api: "algorithms/monotone_polygon/fn.new_monotone_polygon.html" })
       p
         | Monotone polygons has at most two intersections when sliced at a given
@@ -103,6 +102,7 @@ block content
       ,bigo: "O(n \\log n)"
       ,wiki: "https://en.wikipedia.org/wiki/Convex_polygon"
       ,gist: "037a23f8391390df8560a2043a14121e"
+      ,demo: "random_convex"
       ,api: "data/struct.PolygonConvex.html#method.random" })
       p
         | Unlike regular polygons, convex polygons can be efficiently sampled without bias.
