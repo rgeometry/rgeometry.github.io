@@ -1,4 +1,6 @@
 {
+  "version": "1.0.0",
+  "name": "rgeometry.github.io",
   "devDependencies": {
     "@parcel/config-default": "^2.0.0-beta.2",
     "@parcel/transformer-less": "^2.0.0-beta.2",
